@@ -2,37 +2,29 @@ package screenobjects;
 
 import static utils.Utils.driver;
 
+import org.openqa.selenium.support.PageFactory;
+
 import io.appium.java_client.MobileElement;
+import io.appium.java_client.pagefactory.AndroidFindBy;
+import io.appium.java_client.pagefactory.AppiumFieldDecorator;
 
 public abstract class BasicClockScreen {
 
-//    public BasicClockScreen() {
-//	PageFactory.initElements(new AppiumFieldDecorator(driver), this);
-//    }
-
-//    @AndroidFindBy(xpath = "//android.widget.TextView[@text='ALARM']")
-    private MobileElement btnAlarm;
-
-//    @AndroidFindBy(xpath = "//android.widget.TextView[@text='STOPWATCH']")
-    private MobileElement btnStopWatch;
-
     public BasicClockScreen() {
-	btnAlarm = null;
-	btnStopWatch = null;
+	PageFactory.initElements(new AppiumFieldDecorator(driver), this);
     }
 
-    public void clickOnBtnAlarm() {
-	if (btnAlarm == null) {
-	    btnAlarm = (MobileElement) driver.findElementByXPath("//android.widget.TextView[@text='ALARM']");
-	}
+    @AndroidFindBy(xpath = "//android.widget.TextView[@text='ALARM']")
+    private MobileElement btnAlarm;
 
+    @AndroidFindBy(xpath = "//android.widget.TextView[@text='STOPWATCH']")
+    private MobileElement btnStopWatch;
+
+    public void clickOnBtnAlarm() {
 	btnAlarm.click();
     }
 
     public void clickOnBtnStopWatch() {
-	if (btnStopWatch == null) {
-	    btnStopWatch = (MobileElement) driver.findElementByXPath("//android.widget.TextView[@text='STOPWATCH']");
-	}
 
 	btnStopWatch.click();
     }

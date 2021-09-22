@@ -2,48 +2,34 @@ package screenobjects;
 
 import static utils.Utils.driver;
 
+import org.openqa.selenium.support.PageFactory;
+
 import io.appium.java_client.MobileElement;
+import io.appium.java_client.pagefactory.AndroidFindBy;
+import io.appium.java_client.pagefactory.AppiumFieldDecorator;
 
 public class StopWatchScreen extends BasicClockScreen {
 
-//    public StopWatchScreen() {
-//	PageFactory.initElements(new AppiumFieldDecorator(driver), this);
-//    }
-
-//    @AndroidFindBy(id = "com.google.android.deskclock:id/left_button")
-
-//    @AndroidFindBy(accessibility = "com.google.android.deskclock:id/stopwatch_circle")
-
-    private MobileElement btnInnerCircle;
-    private MobileElement btnReset;
-    private MobileElement btnLap;
-
     public StopWatchScreen() {
-	btnInnerCircle = null;
-	btnReset = null;
+	PageFactory.initElements(new AppiumFieldDecorator(driver), this);
     }
 
-    public void clickOnResetBtn() {
-	if (btnReset == null) {
-	    btnReset = (MobileElement) driver.findElementById("com.google.android.deskclock:id/left_button");
-	}
+    @AndroidFindBy(xpath = "//android.view.View[@resource-id='com.google.android.deskclock:id/stopwatch_circle']")
+    private MobileElement btnInnerCircle;
+    @AndroidFindBy(id = "com.google.android.deskclock:id/left_button")
+    private MobileElement btnReset;
+    @AndroidFindBy(id = "com.google.android.deskclock:id/right_button")
+    private MobileElement btnLap;
 
+    public void clickOnResetBtn() {
 	btnReset.click();
     }
 
     public void clickOnInnerCircleBtn() {
-	if (btnInnerCircle == null) {
-	    btnInnerCircle = (MobileElement) driver.findElementById("com.google.android.deskclock:id/stopwatch_circle");
-	}
-
 	btnInnerCircle.click();
     }
-    
+
     public void clickOnLapBtn() {
-	if (btnLap == null) {
-	    btnLap = (MobileElement) driver.findElementById("com.google.android.deskclock:id/right_button");	    
-	}
-	
 	btnLap.click();
     }
 

@@ -1,13 +1,10 @@
 @stopwatchBDD
 Feature: Activate the stopwatch clock, use it and close it
 
-  Scenario: Wait três seconds
-    Given Open the app Clock
-    And Clicks on stopwatch button
+  Scenario: Tap on lap button once
+    Given Clicks on stopwatch button
     And Clicks on inner circle button
-    Then Clicks on lap button
-    Then Clicks on lap button    
-    Then Clicks on reset button
-    Then Closes teh app Clock
+    And Clicks on lap button
+    And Clicks on reset button
     
     

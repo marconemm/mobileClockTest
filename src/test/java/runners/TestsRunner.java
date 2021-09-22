@@ -13,8 +13,8 @@ import io.cucumber.junit.CucumberOptions.SnippetType;
 		glue = "stepdefinitions",
 		snippets = SnippetType.CAMELCASE, //activate the "CamelCase" onto snippet.
 		monochrome = true, // turns the console "black and white".
-		dryRun = false,// creates the missed scenario test snippet.
-		tags = "@stopwatchBDD" // the specific tag that will be executed.dashBoardPage
+		dryRun = false// creates the missed scenario test snippet.
+//		tags = "@stopwatchBDD" // the specific tag that will be executed.dashBoardPage
 		)
 public class TestsRunner {
     

@@ -33,9 +33,9 @@ public class Utils {
 	    desiredCapabilities.setCapability("appium:appActivity", "com.android.deskclock.DeskClock");
 
 	    driver = new AppiumDriver<MobileElement>(url, desiredCapabilities);
-	    driver.manage().timeouts().implicitlyWait(2000, TimeUnit.MILLISECONDS);
-//	    driver.manage().timeouts().pageLoadTimeout(400, TimeUnit.MILLISECONDS);
-//	    driver.manage().timeouts().setScriptTimeout(300, TimeUnit.MILLISECONDS);
+//	    driver.manage().timeouts().implicitlyWait(4000, TimeUnit.MILLISECONDS);
+//	    driver.manage().timeouts().pageLoadTimeout(6000, TimeUnit.MILLISECONDS);
+//	    driver.manage().timeouts().setScriptTimeout(10000, TimeUnit.MILLISECONDS);
 
 	} catch (MalformedURLException mue) {
 
@@ -45,19 +45,8 @@ public class Utils {
     }
 
     public static void appClose() {
-	try {
-	    Thread.sleep(2500);
 	    driver.quit();
-	} catch (InterruptedException ie) {
-	    ie.getMessage();
-	    ie.printStackTrace();
-	}
     }
-
-//    public static <T> T at(Class<T> curClass) {
-//	AppiumFieldDecorator xxx = new AppiumFieldDecorator(driver);
-//	return PageFactory.initElements( xxx, curClass);
-//    }
 
     public static void takeScreenShot(AndroidDriver<MobileElement> driver, Scenario scenario) {
 
