@@ -9,6 +9,7 @@ import org.openqa.selenium.Platform;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
+import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.remote.MobileCapabilityType;
@@ -16,11 +17,11 @@ import io.cucumber.java.Scenario;
 
 public class Utils {
 
+    public static AppiumDriver<MobileElement> driver;
 
-    public static AndroidDriver<MobileElement> appInit() {
+    public static void appInit() {
 	try {
-	    
-	    
+
 	    final DesiredCapabilities desiredCapabilities = new DesiredCapabilities();
 	    final URL url = new URL("http://localhost:4723/wd/hub");
 
@@ -31,22 +32,17 @@ public class Utils {
 	    desiredCapabilities.setCapability("appium:appPackage", "com.google.android.deskclock");
 	    desiredCapabilities.setCapability("appium:appActivity", "com.android.deskclock.DeskClock");
 
-	    final AndroidDriver<MobileElement> driver = new AndroidDriver<MobileElement>(url, desiredCapabilities);	    
+	    driver = new AppiumDriver<MobileElement>(url, desiredCapabilities);
 	    driver.manage().timeouts().implicitlyWait(4, TimeUnit.SECONDS);
-	    
-	    return driver;
 
 	} catch (MalformedURLException mue) {
 
 	    System.err.println(mue.getMessage());
 	    mue.printStackTrace();
 	}
-	
-	return null;	
     }
 
-    public static void appClose(AndroidDriver<MobileElement> driver) {
-
+    public static void appClose() {
 	try {
 	    Thread.sleep(2500);
 	    driver.quit();

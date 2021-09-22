@@ -1,22 +1,24 @@
 package stepdefinitions;
 
+import org.junit.AfterClass;
+import org.junit.BeforeClass;
+
+import utils.Utils;
+
 public class Hooks {
 
-//    @BeforeClass
-//    public void setUp() {
-//	System.out.println("Opening the app...");
-//	driver = Utils.appInit();
-//	System.out.println("The app is open.");
-//    }
-//
-//    @AfterClass
-//    public void tearDown() {
-//	System.out.println("Closing the app...");
-//	Utils.appClose(driver);
-//	System.out.println("The app was closed.");
-//    }
-//
-//    public AndroidDriver<MobileElement> getDriver() {
-//        return driver;
-//    }
+    @BeforeClass
+    public static void setUp() {
+	System.out.println("Opening the app...");
+	Utils.appInit();
+	System.out.println("The app is open.");
+    }
+
+    @AfterClass
+    public static void tearDown() {
+	System.out.println("Closing the app...");
+	Utils.appClose();
+	System.out.println("The app was closed.");
+    }
+
 }

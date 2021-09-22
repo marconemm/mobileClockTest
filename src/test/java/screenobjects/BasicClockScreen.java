@@ -1,33 +1,32 @@
 package screenobjects;
 
+import static utils.Utils.driver;
+
 import io.appium.java_client.MobileElement;
-import io.appium.java_client.android.AndroidDriver;
-import utils.Utils;
 
 public abstract class BasicClockScreen {
-
-    static AndroidDriver<MobileElement> driver;
-
-//    public BasicClockScreen(AndroidDriver<MobileElement> driver) {
+    
+//    public BasicClockScreen() {
 //	PageFactory.initElements(new AppiumFieldDecorator(driver), this);
 //    }
-//
+    
 //    @AndroidFindBy(xpath = "//android.widget.TextView[@text='ALARM']")
-//    private MobileElement btnAlarm;
+    private MobileElement btnAlarm = driver.findElementByXPath("//android.widget.TextView[@text='ALARM']");
+    
+//    @AndroidFindBy(xpath = "//android.widget.TextView[@text='STOPWATCH']")
+    private MobileElement btnStopWatch = driver.findElementByXPath("//android.widget.TextView[@text='STOPWATCH']");
+    
 
     public void clickOnBtnAlarm() {
-	MobileElement btnAlarm = driver.findElementByXPath("//android.widget.TextView[@text='ALARM']");
 
 	btnAlarm.click();
     }
+    
+    
+    public void clickOnBtnStopWatch() {
 
-    public static void initApp() {
-	driver = Utils.appInit();
+	btnStopWatch.click();
     }
+    
 
-    public static void closeApp() {
-
-	Utils.appClose(driver);
-
-    }
 }
