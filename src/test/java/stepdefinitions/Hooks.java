@@ -2,6 +2,7 @@ package stepdefinitions;
 
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
+import io.cucumber.java.Scenario;
 import utils.Utils;
 
 public class Hooks {
@@ -14,8 +15,9 @@ public class Hooks {
     }
 
     @After
-    public void tearDown() {
+    public void tearDown(Scenario scenario) {
 	System.out.println("\nClosing the app...");
+	Utils.takeScreenShot(scenario);
 	Utils.appClose();
 	System.out.println("The app was closed.");
     }

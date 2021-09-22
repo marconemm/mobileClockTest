@@ -1,9 +1,12 @@
 package utils;
 
+import java.io.File;
+import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.concurrent.TimeUnit;
 
+import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.Platform;
 import org.openqa.selenium.TakesScreenshot;
@@ -11,7 +14,6 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
-import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.remote.MobileCapabilityType;
 import io.cucumber.java.Scenario;
 
@@ -43,14 +45,27 @@ public class Utils {
     }
 
     public static void appClose() {
-	    driver.quit();
+	driver.quit();
     }
 
-    public static void takeScreenShot(AndroidDriver<MobileElement> driver, Scenario scenario) {
+    public static void takeScreenShot(Scenario scenario) {
+	try {
 
-	byte[] screenShot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
+	    final byte[] screenShot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
 
-	scenario.attach(screenShot, "image/png", "Cucumber screenshot");
+	    scenario.attach(screenShot, "image/png", "Cucumber screenshot");
+
+	    final File file = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+	    final File srcTo = new File("./target/screenshots",
+		    scenario.getName() + " - " + scenario.getStatus() + ".png");
+
+	    FileUtils.copyFile(file, srcTo);
+	    
+	} catch (IOException ioe) {
+	    System.err.println(ioe.getMessage());
+	    System.err.println(ioe.getCause());
+	    ioe.printStackTrace();
+	}
     }
 
 }
