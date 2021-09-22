@@ -1,15 +1,15 @@
 package stepdefinitions;
 
-import io.cucumber.java.en.Given;
+import io.cucumber.java.en.When;
 import screenobjects.AlarmScreen;
 
-public class AlarmTests {
+public class AlarmTests extends Hooks {
 
-    private AlarmScreen alarmScreen;
+    private AlarmScreen alarmScreen = new AlarmScreen();
 
-    public AlarmTests() {
-	alarmScreen =  new AlarmScreen();
-    }
+//    public AlarmTests() {
+//	alarmScreen =  new AlarmScreen();
+//    }
 
 //    @BeforeClass
 //    public static void setUp() {
@@ -23,7 +23,7 @@ public class AlarmTests {
 //	alarmScreen.clickOnBtnAlarm();
 //    }
 
-    @Given("I clicked on alarm button")
+    @When("I clicked on alarm button")
     public void iClickedOnAlarmButton() {
 	alarmScreen.clickOnBtnAlarm();
     }

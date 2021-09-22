@@ -33,7 +33,9 @@ public class Utils {
 	    desiredCapabilities.setCapability("appium:appActivity", "com.android.deskclock.DeskClock");
 
 	    driver = new AppiumDriver<MobileElement>(url, desiredCapabilities);
-	    driver.manage().timeouts().implicitlyWait(4, TimeUnit.SECONDS);
+	    driver.manage().timeouts().implicitlyWait(2000, TimeUnit.MILLISECONDS);
+//	    driver.manage().timeouts().pageLoadTimeout(400, TimeUnit.MILLISECONDS);
+//	    driver.manage().timeouts().setScriptTimeout(300, TimeUnit.MILLISECONDS);
 
 	} catch (MalformedURLException mue) {
 

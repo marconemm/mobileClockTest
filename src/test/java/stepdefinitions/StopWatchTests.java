@@ -1,61 +1,46 @@
 package stepdefinitions;
 
-import org.junit.FixMethodOrder;
-import org.junit.Test;
-import org.junit.runners.MethodSorters;
-
+import io.cucumber.java.en.Given;
+import io.cucumber.java.en.Then;
 import screenobjects.StopWatchScreen;
+import utils.Utils;
 
-@FixMethodOrder(MethodSorters.JVM)
 public class StopWatchTests {
 
     final private StopWatchScreen stopWatchScreen = new StopWatchScreen();
 
-//    @Given("I clicked on stopwatch button")
-//    @Test
-    public void iClickedOnStopwatchButton() {
-//	waitMiliseconds(3000);
+    @Given("Open the app Clock")
+    public void openTheAppClock() {
+	System.out.println("Opening the app...");
+	Utils.appInit();
+	System.out.println("The app is open.\n");
+    }
+    
+    @Then("Clicks on stopwatch button")
+    public void clicksOnStopwatchButton() {
 	stopWatchScreen.clickOnBtnStopWatch();
     }
 
-//    @Then("Click on inner circle button")
-    @Test
-    public void clickOnInnerCircleButton() {
-//	waitMiliseconds(50);
+    @Then("Clicks on inner circle button")
+    public void clicksOnInnerCircleButton() {
 	stopWatchScreen.clickOnInnerCircleBtn();
-//	waitMiliseconds(50);
-	stopWatchScreen.clickOnInnerCircleBtn();
-//	waitMiliseconds(50);
-	stopWatchScreen.clickOnInnerCircleBtn();
-//	waitMiliseconds(50);
-    }
-
-//    @And("wait {int} miliseconds")
-//    @Test
-//    public void waitMiliseconds(int delay) {
-//    public void waitMiliseconds() {
-//	try {
-//	    Thread.sleep(3000);
-//	} catch (InterruptedException ie) {
-//	    ie.getMessage();
-//	    ie.printStackTrace();
-//	}
-//    }
-
-//    @Then("Click on reset button")
-    @Test
-    public void clickOnResetButton() {
-//	waitMiliseconds(500);
-	stopWatchScreen.clickOnResetBtn();
     }
     
-//    private void waitMiliseconds(int delay) {
-//   	try {
-//   	    Thread.sleep(delay);
-//   	} catch (InterruptedException ie) {
-//   	    ie.getMessage();
-//   	    ie.printStackTrace();
-//   	}
-//       }
+    @Then("Clicks on lap button")
+    public void clicksOnLapButton() {
+	stopWatchScreen.clickOnLapBtn();
+    }
+
+    @Then("Clicks on reset button")
+    public void clicksOnResetButton() {
+	stopWatchScreen.clickOnResetBtn();
+    }
+
+    @Then("Closes teh app Clock")
+    public void closesTehAppClock() {
+	System.out.println("\nClosing the app...");
+	Utils.appClose();
+	System.out.println("The app was closed.");
+    }
 
 }

@@ -16,6 +16,7 @@ public class StopWatchScreen extends BasicClockScreen {
 
     private MobileElement btnInnerCircle;
     private MobileElement btnReset;
+    private MobileElement btnLap;
 
     public StopWatchScreen() {
 	btnInnerCircle = null;
@@ -24,7 +25,7 @@ public class StopWatchScreen extends BasicClockScreen {
 
     public void clickOnResetBtn() {
 	if (btnReset == null) {
-	    btnReset = driver.findElementById("com.google.android.deskclock:id/left_button");
+	    btnReset = (MobileElement) driver.findElementById("com.google.android.deskclock:id/left_button");
 	}
 
 	btnReset.click();
@@ -32,10 +33,18 @@ public class StopWatchScreen extends BasicClockScreen {
 
     public void clickOnInnerCircleBtn() {
 	if (btnInnerCircle == null) {
-	    btnInnerCircle = driver.findElementById("com.google.android.deskclock:id/stopwatch_circle");
+	    btnInnerCircle = (MobileElement) driver.findElementById("com.google.android.deskclock:id/stopwatch_circle");
 	}
 
 	btnInnerCircle.click();
+    }
+    
+    public void clickOnLapBtn() {
+	if (btnLap == null) {
+	    btnLap = (MobileElement) driver.findElementById("com.google.android.deskclock:id/right_button");	    
+	}
+	
+	btnLap.click();
     }
 
 }
