@@ -1,16 +1,21 @@
 @alarmBDD
 Feature: Seting an alarm
-
-	Background:
+		
+	Scenario Outline: Create and exclude an alarm to <time>, <AMPM>
 		Given Clicks on alarm button  	
     Then Clicks on Add alarm button
-    And Sets the time to "2:30"
-    Then Sets the AM|PM selector to "AM"
+    And Sets its time to <time>
+    Then Sets its AM|PM selector to <AMPM>
     Then Clicks on OK button
-  	Then Cheks if a new alarm with the folowinf informations exists:
-				|2:30|
-				|AM|
+  	Then Cheks if a new alarm with the folowing informations exists:
+				|<time>|
+				|<AMPM>|
 		And Set its name to "Automation test Alarm - OK!"
-	
-	Scenario: Exclude the previous created alarm
-		When The "Automation test Alarm - OK!" alarm is located, delete it
+		Then the alarm with the folowing informations exists, delete it:
+				|<time>|
+				|<AMPM>|
+				
+	Examples:
+    |   time   | AMPM |
+    |  "10:51" | "AM" |
+    |  "3:59" | "PM" |

@@ -12,7 +12,6 @@ public class Hooks {
 	System.out.println("Opening the app...");
 	Utils.appInit();
 	System.out.println("The app is open.\n");
-	Utils.wait(3000);
     }
 
     @After
