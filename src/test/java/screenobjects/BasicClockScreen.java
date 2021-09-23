@@ -25,7 +25,6 @@ public abstract class BasicClockScreen {
     }
 
     public void clickOnBtnStopWatch() {
-
 	btnStopWatch.click();
     }
 
